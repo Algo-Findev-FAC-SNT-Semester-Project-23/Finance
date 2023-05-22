@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[481]:
+# In[12]:
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib as plt
 
 
-# In[482]:
+# In[13]:
 
 
 amazon=yf.download('AMZN',
@@ -22,14 +22,14 @@ sma=amazon.Close.mean()
 print(sma)
 
 
-# In[484]:
+# In[14]:
 
 
 sns.lineplot(data=amazon['Close'],label="Close")
 sns.lineplot(data=amazon['Open'],label="open")
 
 
-# In[485]:
+# In[15]:
 
 
 #sma1=pd.DataFrame({'five_day_sma':[]})
@@ -40,7 +40,7 @@ sma1 = pd.DataFrame(zero_data)
 sma1.index=amazon.index
 
 
-# In[486]:
+# In[16]:
 
 
 for i in range (12,61):
@@ -61,17 +61,16 @@ for i in range(12,61):
     sma1.iloc[i,2]=amazon['Close'][i-12]
     for j in range (0,12) :
         k=2/(j+1)
-        ema=ema*(1-k)+amazon['Close'][i+j-12] * k
+        sma1.iloc[i,2]=sma1.iloc[i,2]*(1-k)+amazon['Close'][i+j-12] * k
     
     #print(sma1.iloc[i,0])
     #print (i)
 
 
-# In[487]:
+# In[17]:
 
 
 sns.lineplot(sma1.iloc[12:61,0],label='12 day sma')
 sns.lineplot(amazon["Close"],label='closing price')
 sns.lineplot(sma1.iloc[26:61,1],label='26 day sma')
 sns.lineplot(sma1.iloc[12:61,2],label='12 day ema')
-

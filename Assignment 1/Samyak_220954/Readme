@@ -1,0 +1,8 @@
+In this code I calculated SMA(Simple Moving Averages) and EMA(Exponential Moving Averages) of Airtel Stock and then then plotted them -
+Simple Moving Average refers to the mean of the closing values of the stock during a given timeframe
+Exponential Moving Average refers to mean of the closing values of the stock during a given timeframe where more importance is given to values closer to the close date
+In this code I used rolling method of pandas to fix the timeperiod to 3 months(90 days)
+mean method of numpy is used to calculate average of the close values during the timeframe
+ewn method helps to do exponentially weighted calculations which is needed while calculating EMA, span is used to fix the timeperiod
+importing yahoo finance helps to download the data for Airtel during the specified timeperiod
+I plotted SMA,EMA,Close Price against years using mathplotlib library and used methods like labels,title,grid,legend to provide more features of the graph and make it more readable
